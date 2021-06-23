@@ -1,14 +1,16 @@
 import React from 'react'
+import StepForm from './step_form'
+import StepListItemContainer from './step_list_item_container'
 
-const StepList = ({todo_id, steps, receiveStep}) => {
+const StepList = ({steps, todo_id, receiveStep}) => {
   const stepLi = steps.map((step) => {
-    return <StepListItem key={steps.id} step={step} receiveStep={receiveSteps} />;
+    return <StepListItemContainer key={step.id} step={step}/>;
   });
 
   return (
     <>
-      <TodoForm receiveTodo={props.receiveTodo} />
-      <ul>{todoLi}</ul>
+      <StepForm todo_id={todo_id} receiveStep={receiveStep}/>
+      <ul>{stepLi}</ul>
     </>
   );
 };
