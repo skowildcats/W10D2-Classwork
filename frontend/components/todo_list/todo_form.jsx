@@ -1,5 +1,5 @@
 import React from 'react';
-import uniqueId from '../util';
+import {strToBool, uniqueId} from '../util';
 
 export default class TodoForm extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export default class TodoForm extends React.Component {
   }
 
   handleDone(e) {
-    this.setState({done: e.target.value});
+    this.setState({done: strToBool(e.target.value)});
   }
 
   handleSubmit(e) {
@@ -43,9 +43,9 @@ export default class TodoForm extends React.Component {
 
         <div>done:</div>
         <label htmlFor="done-true">true</label>
-        <input id="done-true" name="done" type="radio" value="true" checked={this.state.done === "true"} onChange={this.handleDone.bind(this)}/>
+        <input id="done-true" name="done" type="radio" value={true} checked={this.state.done === true} onChange={this.handleDone.bind(this)}/>
         <label htmlFor="done-false">false</label>
-        <input id="done-false" name="done" type="radio" value="false" checked={this.state.done === "false"} onChange={this.handleDone.bind(this)}/>
+        <input id="done-false" name="done" type="radio" value={false} checked={this.state.done === false} onChange={this.handleDone.bind(this)}/>
 
         <button>save</button>
       </form>

@@ -1,4 +1,3 @@
-import React from 'react';
 import {connect} from 'react-redux';
 import TodoList from './todo_list';
 import allTodos from '../../reducers/selector';
@@ -14,4 +13,3 @@ const mDTP = dispatch => ({
 });
 
 export default connect(mSTP, mDTP)(TodoList);
-
