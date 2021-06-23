@@ -1,21 +1,21 @@
 import {RECEIVE_STEP, RECEIVE_STEPS, REMOVE_STEP, TOGGLE_STEP} from '../actions/step_actions'
 
-const initialSteps = {
-  1: {
-    id: 1,
-    title: 'walk to store',
-    done: false,
-    todo_id: 1
-  },
-  2: {
-    id: 2,
-    title: 'buy soap',
-    done: false,
-    todo_id: 1
-  }
-};
+// const initialSteps = {
+//   1: {
+//     id: 1,
+//     title: 'walk to store',
+//     done: false,
+//     todo_id: 1
+//   },
+//   2: {
+//     id: 2,
+//     title: 'buy soap',
+//     done: false,
+//     todo_id: 1
+//   }
+// };
 
-const stepsReducer = (state = initialSteps, action) => {
+const stepsReducer = (state = {}, action) => {
 
   Object.freeze(state);
   const newState = Object.assign({}, state);
