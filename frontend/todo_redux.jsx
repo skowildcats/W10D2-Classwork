@@ -37,7 +37,7 @@ steps: {
     done: false,
     todo_id: 1
   }
-}}
+}};
 
 document.addEventListener("DOMContentLoaded", () => {
   window.store = configureStore(initialState);

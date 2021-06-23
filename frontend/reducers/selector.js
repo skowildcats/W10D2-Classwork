@@ -1,5 +1,5 @@
 const allTodos = (state) => {
-  return Object.values(state.todos)
-}
+  return Object.values(state.todos);
+};
 
-export default allTodos
+export default allTodos;

@@ -1,7 +1,13 @@
-import React from 'react'
+import React from 'react';
 
 const TodoListItem = ({todo}) => {
-  return <li key={todo.id}> {todo.title}</li>
-}
+  return (
+    <>
+      <li>{todo.title}</li>
+      <li>{todo.body}</li>
+      <li>done: {`${todo.done}`}</li>
+    </>
+  );
+};
 
-export default TodoListItem
+export default TodoListItem;
