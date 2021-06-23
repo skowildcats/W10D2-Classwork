@@ -1,7 +1,6 @@
-import { bindActionCreators } from 'redux';
-import { RECEIVE_TODO, RECEIVE_TODOS, receiveTodo, receiveTodos, REMOVE_TODO, removeTodo} from '../actions/todo_actions'
+import {RECEIVE_TODO, RECEIVE_TODOS, REMOVE_TODO} from '../actions/todo_actions'
 
-const initialState = {
+const initialTodos = {
   1: {
     id: 1,
     title: "wash car",
@@ -16,32 +15,27 @@ const initialState = {
   }
 };
 
-const todosReducer = (state = initialState, action) => {
+const todosReducer = (state = initialTodos, action) => {
 
   Object.freeze(state);
   const newState = Object.assign({}, state);
 
   switch (action.type) {
     case RECEIVE_TODOS:
-      let todo_map = {}
-      action.todos.map((todo) => {
-        todo_map[todo.id] = todo
-      })
-      return todo_map
+      let todo_map = {};
+      action.todos.forEach((todo) => {
+        todo_map[todo.id] = todo;
+      });
+      return todo_map;
     case RECEIVE_TODO:
-      newState[action.todo.id] = action.todo
-      return newState
+      newState[action.todo.id] = action.todo;
+      return newState;
     case REMOVE_TODO:
-      delete(newState[action.id]) 
-      return newState
+      delete(newState[action.todo.id]);
+      return newState;
     default:
       return state;
   }
 };
 
-
-
 export default todosReducer;
-
-// Object.freeze(state); // throw an error if we try to mutate state object
-// const newState = Object.assign({}, state);
