@@ -1,7 +1,9 @@
-export const allTodos = (state) => {
+const allTodos = (state) => {
   return Object.values(state.todos);
 };
 
-export const stepsByTodoId = (state, todoId) => {
-  return Object.values(state.steps).filter(step => step.id === todoId);
+const stepsByTodoId = (state, todoId) => {
+  return Object.values(state.steps).filter(step => step.todo_id === todoId);
 };
+
+export {allTodos, stepsByTodoId}

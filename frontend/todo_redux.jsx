@@ -5,7 +5,7 @@ import Root from "./components/root"
 import configureStore from './store/store';
 import {receiveTodo, receiveTodos, removeTodo} from './actions/todo_actions';
 import {receiveStep, receiveSteps, removeStep, toggleStep} from './actions/step_actions';
-import allTodos from './reducers/selector'
+import {allTodos, stepsByTodoId} from './reducers/selector'
 
 
 const initialState = {
@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.removeStep = removeStep;
   window.toggleStep = toggleStep;
   window.allTodos = allTodos;
+  window.stepsByTodoId = stepsByTodoId;
 
   const content = document.getElementById('content');
   ReactDOM.render(<Root store={store}/>, content);
