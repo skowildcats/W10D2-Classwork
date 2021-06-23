@@ -1,40 +1,48 @@
 import React from 'react';
+import TodoDetailViewContainer from '../todo_list/todo_detail_view_container';
 
-const TodoListItem = ({todo, receiveTodo, removeTodo}) => {
+export default class TodoListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {detail: false};
+  }
 
-  function handleClick(e) {
+  detailClick(e) {
     e.preventDefault();
-    removeTodo(todo);
+    this.setState({detail: !this.state.detail});
   }
 
-  function done(e) {
+  done(e) {
     e.preventDefault()
-    todo.done = true;
-    receiveTodo(todo);
+    const newTodo = Object.assign({}, this.props.todo);
+    newTodo.done = true;
+    this.props.receiveTodo(newTodo);
   }
 
-  function undo(e) {
+  undo(e) {
     e.preventDefault()
-    todo.done = false;
-    receiveTodo(todo);
+    const newTodo = Object.assign({}, this.props.todo);
+    newTodo.done = false;
+    this.props.receiveTodo(newTodo);
   }
 
-  let doneButton = null;
-  if (todo.done) {
-    doneButton = <button onClick={undo.bind(this)}>Undo</button>;
-  } else {
-    doneButton = <button onClick={done.bind(this)}>Done</button>;
-  }
+  render() {
+    let doneButton = null;
+    if (this.props.todo.done) {
+      doneButton = <button onClick={this.undo.bind(this)}>Undo</button>;
+    } else {
+      doneButton = <button onClick={this.done.bind(this)}>Done</button>;
+    }
+    
+    let detailView = null;
+    if (this.state.detail) { detailView = <TodoDetailViewContainer todo={this.props.todo} receiveTodo={this.props.receiveTodo} />}
 
-  return (
-    <>
-      <li>{todo.title}</li>
-      <li>{todo.body}</li>
-      <li>done: {`${todo.done}`}</li>
-      {doneButton}
-      <button onClick={handleClick.bind(this)}>Delete To-Do</button>
-    </>
-  );
+    return (
+      <>
+        <h3 onClick={this.detailClick.bind(this)}>{this.props.todo.title}</h3>
+        {doneButton}
+        {detailView}
+      </>
+    );
+  }
 };
-
-export default TodoListItem;

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import TodoList from './todo_list';
 import allTodos from '../../reducers/selector';
-import { removeTodo } from '../../actions/todo_actions';
+import {removeTodo} from '../../actions/todo_actions';
 
 const mSTP = state => ({
   todos: allTodos(state)

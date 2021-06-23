@@ -23,7 +23,6 @@ const initialState = {
     done: true
   }
 },
-
 steps: {
   1: {
     id: 1,
